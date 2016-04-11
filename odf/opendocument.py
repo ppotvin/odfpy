@@ -24,24 +24,21 @@
 
 __doc__="""Use OpenDocument to generate your documents."""
 
-import zipfile, time, sys, mimetypes, copy, os.path
-
-# to allow Python3 to access modules in the same path
-sys.path.append(os.path.dirname(__file__))
+import zipfile, time, sys, mimetypes
 
 # using BytesIO provides a cleaner interface than StringIO
 # with both Python2 and Python3: the programmer must care to
 # convert strings or unicode to bytes, which is valid for Python 2 and 3.
 from io import StringIO, BytesIO
 
-from namespaces import *
-import manifest
-import meta
-from office import *
-import element
-from attrconverters import make_NCName
+from .namespaces import *
+from . import manifest
+from . import meta
+from .office import *
+from . import element
+from .attrconverters import make_NCName
 from xml.sax.xmlreader import InputSource
-from odfmanifest import manifestlist
+from .odfmanifest import manifestlist
 
 if sys.version_info[0] == 3:
     unicode=str # unicode function does not exist
@@ -177,12 +174,7 @@ class OpenDocument:
         Builds internal caches; called from element.py
         @param elt an element.Element instance
         """
-        # assert(isinstance(elt, element.Element))
-        # why do I need this more intricated assertion?
-        # with Python3, the type of elt pops out as odf.element.Element
-        # in one test ???
-        import odf.element
-        assert(isinstance(elt, element.Element) or isinstance(elt, odf.element.Element) )
+        assert(isinstance(elt, element.Element))
 
         if elt.qname not in self.element_dict:
             self.element_dict[elt.qname] = []

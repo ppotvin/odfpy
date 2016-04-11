@@ -18,10 +18,8 @@
 # Contributor(s):
 #
 
-import sys, os.path
-sys.path.append(os.path.dirname(__file__))
-from namespaces import DRAWNS, STYLENS, PRESENTATIONNS
-from element import Element
+from .namespaces import DRAWNS, STYLENS, PRESENTATIONNS
+from .element import Element
 
 def StyleRefElement(stylename=None, classnames=None, **args):
     qattrs = {}

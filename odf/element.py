@@ -22,13 +22,13 @@
 # Note: This script has copied a lot of text from xml.dom.minidom.
 # Whatever license applies to that file also applies to this file.
 #
-import sys, os.path
-sys.path.append(os.path.dirname(__file__))
+import sys
 import xml.dom
 from xml.dom.minicompat import *
-from namespaces import nsdict
-import grammar
-from attrconverters import AttrConverters
+
+from .namespaces import nsdict
+from . import grammar
+from .attrconverters import AttrConverters
 
 if sys.version_info[0] == 3:
     unicode=str # unicode function does not exist
@@ -336,7 +336,6 @@ class Element(Node):
         """ Odfpy maintains a list of known namespaces. In some cases a prefix is used, and
             we need to know which namespace it resolves to.
         """
-        global nsdict
         for ns,p in nsdict.items():
             if p == prefix: return ns
         return None

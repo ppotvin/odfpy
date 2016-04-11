@@ -22,14 +22,13 @@
 #pdb.set_trace()
 
 import sys, os.path
-sys.path.append(os.path.dirname(__file__))
 from xml.sax import handler
 from xml.sax.saxutils import escape, quoteattr
 from xml.dom import Node
 
-from opendocument import load
+from .opendocument import load
 
-from namespaces import ANIMNS, CHARTNS, CONFIGNS, DCNS, DR3DNS, DRAWNS, FONS, \
+from .namespaces import ANIMNS, CHARTNS, CONFIGNS, DCNS, DR3DNS, DRAWNS, FONS, \
   FORMNS, MATHNS, METANS, NUMBERNS, OFFICENS, PRESENTATIONNS, SCRIPTNS, \
   SMILNS, STYLENS, SVGNS, TABLENS, TEXTNS, XLINKNS
 
